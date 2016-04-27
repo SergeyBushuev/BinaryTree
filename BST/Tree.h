@@ -95,7 +95,7 @@ TreeNode<T>* Tree<T>::delete_node(TreeNode<T> *z)
 template<class T>
 TreeNode<T>* Tree<T>::find_max(TreeNode<T>* x)
 {
-	while (x->right != 0)                              // здесь все очевидно - самыое максимальное значение у самого правого  
+	while (x->right != 0)                              // здесь все очевидно - самое максимальное значение у самого правого  
 		x = x->right;
 	return x;
 }
