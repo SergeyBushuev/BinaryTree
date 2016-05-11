@@ -1,6 +1,6 @@
-#ifndef _TREE_H
-#define _TREE_H
-
+#include <Node.h>
+#include <iostream>
+#include <fstream>
 template <class T>
 class Tree
 {
@@ -149,4 +149,3 @@ TreeNode<T>* Tree<T>::get_root()
 {
 	return root;
 }
-#endif
