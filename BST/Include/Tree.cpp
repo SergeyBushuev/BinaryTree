@@ -1,5 +1,6 @@
-#ifndef _TREE_H
-#define _TREE_H
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 template <class T> class Tree;
 #include "node.h"
