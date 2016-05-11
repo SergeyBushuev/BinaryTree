@@ -3,7 +3,7 @@
 using namespace std;
 
 template <class T> class Tree;
-#include "node.h"
+#include "Node.h"
 
 template <class T>
 class Tree
