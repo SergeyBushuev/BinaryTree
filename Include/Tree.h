@@ -1,9 +1,5 @@
-#include <iostream>
-#include <fstream>
-using namespace std;
-
-template <class T> class Tree;
-#include "Node.h"
+#ifndef _TREE_H
+#define _TREE_H
 
 template <class T>
 class Tree
@@ -153,3 +149,4 @@ TreeNode<T>* Tree<T>::get_root()
 {
 	return root;
 }
+-#endif#pragma once
