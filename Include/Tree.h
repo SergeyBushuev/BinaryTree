@@ -149,4 +149,4 @@ TreeNode<T>* Tree<T>::get_root()
 {
 	return root;
 }
--#endif#pragma once
+#endif
