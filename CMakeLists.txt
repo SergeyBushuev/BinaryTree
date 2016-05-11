@@ -21,4 +21,5 @@ add_library (${PROJECT} STATIC ${HEADERS} ${SOURCES})
 if (TESTS_FOR_${PROJECT})
   add_subdirectory(tests)
 endif ()
+
   
