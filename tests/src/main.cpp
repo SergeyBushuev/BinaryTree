@@ -1,6 +1,6 @@
 
 #include <Node.h>
-
+#include <Tree.h>
 #include <catch.hpp>
 #include <fstream>
 #include <iostream>
