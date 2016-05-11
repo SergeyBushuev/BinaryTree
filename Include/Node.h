@@ -2,7 +2,7 @@
 #define _NODE_H
 
 template <class T> class TreeNode
-{
+{ 
 	friend class Tree<T>;
 public:
 	TreeNode(const T &);
