@@ -14,3 +14,4 @@ SCENARIO("insert_int", "[insert_node]") {
 	REQUIRE(intTree.find_node(3));
 	REQUIRE(intTree.find_node(1));
 }
+ 
