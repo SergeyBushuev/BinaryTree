@@ -1,7 +1,7 @@
 #ifndef _NODE_H
 #define _NODE_H
 
-template <class T> 
+template <class T>   
 class TreeNode
 { 
 	friend class Tree;
