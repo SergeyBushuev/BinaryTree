@@ -11,7 +11,7 @@ protected:
 	TreeNode* left;           // указатель на левую ветку (ребёнка)
 	TreeNode* right;          // указатель на правую ветку
 	TreeNode* parent;         // указатель на родителя
-	T key;            /* ключ */
+	T key;            /* ключ */ 
 };
 
 template <class T>
