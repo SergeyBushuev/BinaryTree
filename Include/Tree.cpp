@@ -23,36 +23,7 @@ Tree<T>::Tree()
 {
 	root = 0;                      // Пустое дерево
 }
-template<class T>
-int Tree<T>::insert_node(const T &x)
-{
-	TreeNode<T>* n = new TreeNode<T>(x);  
-	TreeNode<T>* ptr;
-	TreeNode<T>* ptr1;
 
-	n->parent = n->left = n->right = 0;           
-	ptr = root;
-	ptr1 = ptr;
-	while (ptr != 0)                     
-	{
-		ptr1 = ptr;                 
-		if (x < ptr->get_key())  
-			ptr = ptr->left;
-		else
-			ptr = ptr->right;   
-	};
-	n->parent = ptr1;
-	if (ptr1 == 0)                       // Если дерево пусто, то вставленный узел становиться корнем
-		root = n;
-	else
-	{
-		if (x < ptr1->get_key())
-			ptr1->left = n;
-		else
-			ptr1->right = n;
-	}
-	return 0;
-}
 
 /* возможны три случая - если у z нет детей, то помещаем 0 в соответствующее поле
   родителя z, если у z есть один ребенок, то можно вырезать z, соединив его родителя напрямую с
