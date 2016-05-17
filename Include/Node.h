@@ -7,7 +7,7 @@ class TreeNode
 	friend class Tree;
 public:
 	TreeNode(const T &);
-	T get_key();
+	T get_key(); 
 protected:
 	TreeNode* left;           // указатель на левую ветку (ребёнка)
 	TreeNode* right;          // указатель на правую ветку
