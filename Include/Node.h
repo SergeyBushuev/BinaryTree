@@ -17,7 +17,7 @@ protected:
 
 template <class T>
 class Tree
-{
+{ 
 public:
 	Tree();                                                     // Конструктор  
 	int insert_node(const T &);                         // Вставляет узел  
