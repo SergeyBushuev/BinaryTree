@@ -3,7 +3,7 @@
 
 template <class T> class TreeNode
 { 
-	friend class Tree<T>;
+	friend class Tree;
 public:
 	TreeNode(const T &);
 	T get_key();
