@@ -21,9 +21,16 @@ T TreeNode <T>::get_key()
 template<class T>
 Tree<T>::Tree()
 {
-	root = 0;                      // Пустое дерево
+	root = nullptr;                      // Пустое дерево
 }
-
+template <class T>
+Tree<T>::Tree(initializer_list<T> L){
+	root = nullptr;
+	for (int i : L)
+	{
+		add(i);
+	}
+}
 template<class T>
 int Tree<T>::insert_node(const T &x)
 {
