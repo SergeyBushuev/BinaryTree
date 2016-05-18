@@ -244,3 +244,32 @@ ofstream & operator <<(ofstream & fout, Tree<T> & tree) {
 	if (tree.root->print_file(fout)) return fout;
 	else throw Empty_tree();
 }
+BinarySearchTree<T>::NodeIterator::NodeIterator(const Node * node) : NodeIterator()
+{
+	fillListOfNodes(history_, node);
+}
+
+template <typename T>
+bool Tree<T>::TreeIt::operator == (const TreeInt & _iterator) 
+{
+	return this->history_ == _iterator.history_;
+}
+
+template <typename T>
+bool Tree<T>::TreeInt::operator != (const TreeInt & _iterator) 
+{
+	return !this->operator==(_iterator);
+}
+
+template <typename T>
+TreeInt Tree<T>::TreeInt::operator ++()
+{
+	history_.pop_front();
+	return *this;
+}
+
+template <typename T>
+const T & Tree<T>::TreeInt::operator *()
+{
+	return history_.front()->value_;
+}
