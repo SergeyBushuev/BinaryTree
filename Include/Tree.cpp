@@ -32,6 +32,18 @@ Tree<T>::Tree(initializer_list<T> L){
 	}
 }
 template<class T>
+int Tree<T>::del(TreeNode<T>* z)
+{
+	if (z->left) {
+		del(z->left);
+	}
+	if (z->right) {
+		del(z->right);
+	}
+
+	delete z;
+}
+template<class T>
 int Tree<T>::insert_node(const T &x)
 {
 	TreeNode<T>* n = new TreeNode<T>(x);  
