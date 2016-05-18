@@ -8,7 +8,7 @@ class TreeNode
 public:
 	TreeNode(const T &);
 	T get_key(); 
-protected:
+private:
 	TreeNode* left;           // указатель на левую ветку (ребёнка)
 	TreeNode* right;          // указатель на правую ветку
 	TreeNode* parent;         // указатель на родителя
