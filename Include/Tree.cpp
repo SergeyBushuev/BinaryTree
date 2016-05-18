@@ -84,7 +84,28 @@ int Tree<T>::insert_node(const T &x)
   (в смысле порядка на ключах) за z элемент y; у него нет левого ребенка (всегда). Теперь можно
   скопировать ключ и дополнительные данные из вершины y в вершину z, а саму вершину y удалить
   описанным выше способом */
-
+template <class T>
+bool Tree<T>::print_file(ofstream &fout) {
+	if (root != nullptr) {
+		if (fout.is_open()) {
+			if (left != nullptr) left->print_file(fout);
+			fout << k << " ";
+			if (right != nullptr) right->print_file(fout);
+		}
+		return true;
+	}
+	return false;
+}
+template <class T>
+bool Tree<T>::print() {
+	if (root != nullptr) {
+		if (left != nullptr) left->print_console();
+		cout << k << " ";
+		if (right != nullptr) right->print_console();
+		return true;
+	}
+	else return false;
+}
 template<class T>
 TreeNode<T>* Tree<T>::delete_node(TreeNode<T> *z)
 {
