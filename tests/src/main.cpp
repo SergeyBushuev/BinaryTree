@@ -4,6 +4,11 @@
 #include <fstream>
 #include <iostream>
 template<class T>
+Tree<T>::Tree()
+{
+	root = 0;                      // Пустое дерево
+}
+template<class T>
 int Tree<T>::insert_node(const T &x)
 {
 	TreeNode<T>* n = new TreeNode<T>(x);  
