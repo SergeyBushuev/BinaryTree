@@ -21,6 +21,7 @@ class Tree
 public:
 	Tree();    // Конструктор 
 	Tree(initializer_list<T> L); // Списковый конструктор  
+	~Tree();
 	int insert_node(const T &);                         // Вставляет узел  
 	TreeNode<T>* delete_node(TreeNode<T> *);     // Удаляет узел  
 	void inorder_walk(TreeNode<T>*);                    // Печатает все ключи в неубывающем порядке  
