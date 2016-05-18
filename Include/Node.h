@@ -10,6 +10,16 @@ ifstream & operator >> (ifstream & fin, Tree<T> &tree);
 template <class T>
 ofstream & operator<<(ofstream & fout, Tree<T> &tree);
 
+class File_Not_Open : public Exceptions {
+public:
+	File_Not_Open();
+};
+
+class Empty_tree : public Exceptions {
+public:
+	Empty_tree();
+};
+
 template <class T>   
 class TreeNode
 { 
