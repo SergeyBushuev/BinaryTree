@@ -64,9 +64,9 @@ private:
 	TreeNode<T>* find_succsessor(const T &);            // Находит следубщий за элементом с данным ключом элемент
 	TreeNode<T>* find_max(TreeNode<T>*);         // Находит узел с минимальным значением ключа и возвращает указатель на него  
 	TreeNode<T>* find_min(TreeNode<T>*);
-	frined ostream & operator<<(ostream & out, Tree<T> &tree);
-	frined ifstream & operator >> (ifstream & fin, Tree<T> &tree);
-	frined ofstream & operator<<(ofstream & fout, Tree<T> &tree);
+	friend ostream & operator<<(ostream & out, Tree<T> &tree);
+	friend ifstream & operator >> (ifstream & fin, Tree<T> &tree);
+	friend ofstream & operator<<(ofstream & fout, Tree<T> &tree);
 	static void fillList(list<const TreeNode*> & list, const TreeNode *);
 	class TreeIt {
 	public:
