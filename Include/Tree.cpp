@@ -1,9 +1,11 @@
-#include <Node.h>
+#include "stdafx.h"
 #include <iostream>
 #include <fstream>
-
+#include "Node.h"
 
 using namespace std;
+Exceptions::Exceptions(char* _err) : err(_err) {}
+char* Exceptions::what() { return err; }
 File_Not_Open::File_Not_Open() : Exceptions("Error1: Файл не открыт") {}
 Empty_tree::Empty_tree() : Exceptions("Error#2: Пустое дерево") {}
 template <class T> class Tree;
@@ -26,7 +28,7 @@ Tree<T>::Tree()
 	root = nullptr;                      // Пустое дерево
 }
 template <class T>
-Tree<T>::Tree(initializer_list<T> L){
+Tree<T>::Tree(initializer_list<T> L) {
 	root = nullptr;
 	for (int i : L)
 	{
@@ -36,7 +38,7 @@ Tree<T>::Tree(initializer_list<T> L){
 template<class T>
 Tree<T>::~Tree()
 {
-	if(root) del(root);                      // Пустое дерево
+	if (root) del(root);                      // Пустое дерево
 }
 template<class T>
 int Tree<T>::del(TreeNode<T>* z)
@@ -53,20 +55,20 @@ int Tree<T>::del(TreeNode<T>* z)
 template<class T>
 int Tree<T>::insert_node(const T &x)
 {
-	TreeNode<T>* n = new TreeNode<T>(x);  
+	TreeNode<T>* n = new TreeNode<T>(x);
 	TreeNode<T>* ptr;
 	TreeNode<T>* ptr1;
 
-	n->parent = n->left = n->right = 0;           
+	n->parent = n->left = n->right = 0;
 	ptr = root;
 	ptr1 = ptr;
-	while (ptr != 0)                     
+	while (ptr != 0)
 	{
-		ptr1 = ptr;                 
-		if (x < ptr->get_key())  
+		ptr1 = ptr;
+		if (x < ptr->get_key())
 			ptr = ptr->left;
 		else
-			ptr = ptr->right;   
+			ptr = ptr->right;
 	};
 	n->parent = ptr1;
 	if (ptr1 == 0)                       // Если дерево пусто, то вставленный узел становиться корнем
@@ -81,11 +83,11 @@ int Tree<T>::insert_node(const T &x)
 	return 0;
 }
 /* возможны три случая - если у z нет детей, то помещаем 0 в соответствующее поле
-  родителя z, если у z есть один ребенок, то можно вырезать z, соединив его родителя напрямую с
-  его ребенком. Если же детей двое, то требуются некоторые приготовления: мы находим следующий
-  (в смысле порядка на ключах) за z элемент y; у него нет левого ребенка (всегда). Теперь можно
-  скопировать ключ и дополнительные данные из вершины y в вершину z, а саму вершину y удалить
-  описанным выше способом */
+родителя z, если у z есть один ребенок, то можно вырезать z, соединив его родителя напрямую с
+его ребенком. Если же детей двое, то требуются некоторые приготовления: мы находим следующий
+(в смысле порядка на ключах) за z элемент y; у него нет левого ребенка (всегда). Теперь можно
+скопировать ключ и дополнительные данные из вершины y в вершину z, а саму вершину y удалить
+описанным выше способом */
 template <class T>
 bool Tree<T>::print_file(ofstream &fout) {
 	if (root != nullptr) {
@@ -109,13 +111,13 @@ bool Tree<T>::print() {
 	else return false;
 }
 template <typename T>
-iterator Tree<T>::begin() 
+iterator Tree<T>::begin()
 {
 	return iterator(root);
 }
 
 template <typename T>
-iterator Tree<T>::end() 
+iterator Tree<T>::end()
 {
 	return iterator();
 }
@@ -244,32 +246,33 @@ ofstream & operator <<(ofstream & fout, Tree<T> & tree) {
 	if (tree.root->print_file(fout)) return fout;
 	else throw Empty_tree();
 }
-BinarySearchTree<T>::NodeIterator::NodeIterator(const Node * node) : NodeIterator()
+template <typename T>
+Tree<T>::TreeIt::TreeIt(const TreeNode * node) 
 {
-	fillListOfNodes(history_, node);
+	fillList(history_, node);
 }
 
 template <typename T>
-bool Tree<T>::TreeIt::operator == (const TreeInt & _iterator) 
+bool Tree<T>::TreeIt::operator == (const TreeInt & _iterator)
 {
 	return this->history_ == _iterator.history_;
 }
 
 template <typename T>
-bool Tree<T>::TreeInt::operator != (const TreeInt & _iterator) 
+bool Tree<T>::TreeIt::operator != (const TreeInt & _iterator)
 {
 	return !this->operator==(_iterator);
 }
 
 template <typename T>
-TreeInt Tree<T>::TreeInt::operator ++()
+TreeIt Tree<T>::TreeIt::operator ++()
 {
 	history_.pop_front();
 	return *this;
 }
 
 template <typename T>
-const T & Tree<T>::TreeInt::operator *()
+const T & Tree<T>::TreeIt::operator *()
 {
 	return history_.front()->value_;
 }
