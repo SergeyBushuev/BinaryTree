@@ -94,6 +94,7 @@ TreeNode<T>* Tree<T>::delete_node(TreeNode<T> *z)
 	}
 	if (y != z)                                        // если мы вырезали вершин, отличную от z, то ее данные перемещаем в z  
 		z->key = y->get_key();
+	delete z;
 	return y;
 }
 template<class T>
