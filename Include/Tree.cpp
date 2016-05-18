@@ -4,8 +4,8 @@
 
 
 using namespace std;
-File_Not_Open::File_Not_Open() : Exceptions("ERROR: file not open!") {}
-Empty_tree::Empty_tree() : Exceptions("ERROR: Tree is empty!") {}
+File_Not_Open::File_Not_Open() : Exceptions("Error1: Файл не открыт") {}
+Empty_tree::Empty_tree() : Exceptions("Error#2: Пустое дерево") {}
 template <class T> class Tree;
 template<class T>
 TreeNode <T>::TreeNode(const T &a)
