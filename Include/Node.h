@@ -37,6 +37,8 @@ private:
 template <class T>
 class Tree
 { 
+	class TreeIt;
+	using iterator = TreeIt;
 public:
 	Tree();    // Конструктор 
 	Tree(initializer_list<T> L); // Списковый конструктор  
@@ -49,6 +51,8 @@ public:
 	TreeNode<T>* delete_node(TreeNode<T> *);     // Удаляет узел  
 	TreeNode<T>* find_node(TreeNode<T>*, const T &);  // Находит элемент по ключу
 	TreeNode<T> *get_root();                            // Возвращает указатель на корень дерева  
+	iterator begin();
+	iterator end();
 private:
 	TreeNode<T> *root;                                  // Корень  
 	TreeNode<T>* find_succsessor(const T &);            // Находит следубщий за элементом с данным ключом элемент
@@ -58,6 +62,17 @@ private:
 	frined ifstream & operator >> (ifstream & fin, Tree<T> &tree);
 	frined ofstream & operator<<(ofstream & fout, Tree<T> &tree);
 	static void fillList(list<const TreeNode*> & list, const TreeNode * );
+class TreeIt {
+	public:
+		TreeIt() = default;
+		TreeIt(const Node * node);
+		auto operator == (const TreeIt & _iterator) -> bool;
+		auto operator != (const TreeIt & _iterator) -> bool;
+		auto operator ++()->TreeIt;
+		auto operator *() const -> const T &;
+	private:
+		std::list<const Node *> history_;
+	};
 };
 
 
