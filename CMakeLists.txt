@@ -9,7 +9,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 option(TESTS_FOR_${PROJECT} "Include tests for project" ON)
 
 set(HEADERS ${PROJECT_SOURCE_DIR}/Include/Node.h)
-set(SOURCES ${PROJECT_SOURCE_DIR}/Include/Tree.cpp)
+set(SOURCES ${PROJECT_SOURCE_DIR}/Include/Tree.h)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
