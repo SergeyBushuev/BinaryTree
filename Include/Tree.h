@@ -1,3 +1,5 @@
+#ifndef _BST_H
+#define _BST_H
 #include <iostream>
 #include <fstream>
 #include "Node.h"
@@ -248,7 +250,7 @@ ofstream & operator <<(ofstream & fout, Tree<T> & tree) {
 	else throw Empty_tree();
 }
 template <typename T>
-Tree<T>::TreeIt::TreeIt(const TreeNode * node) 
+Tree<T>::TreeIt::TreeIt(const TreeNode * node)
 {
 	fillList(history_, node);
 }
@@ -277,3 +279,5 @@ const T & Tree<T>::TreeIt::operator *()
 {
 	return history_.front()->key;
 }
+
+#endif
