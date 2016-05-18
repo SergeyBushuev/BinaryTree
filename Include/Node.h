@@ -66,12 +66,12 @@ class TreeIt {
 	public:
 		TreeIt() = default;
 		TreeIt(const Node * node);
-		auto operator == (const TreeIt & _iterator) -> bool;
-		auto operator != (const TreeIt & _iterator) -> bool;
-		auto operator ++()->TreeIt;
-		auto operator *() const -> const T &;
+		bool operator == (const TreeIt & _iterator) -> bool;
+		bool operator != (const TreeIt & _iterator) -> bool;
+		TreeIt operator ++();
+		const T & operator *();
 	private:
-		std::list<const Node *> history_;
+		list<const TreeNode *> history_;
 	};
 };
 
