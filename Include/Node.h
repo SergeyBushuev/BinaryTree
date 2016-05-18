@@ -1,19 +1,7 @@
 #ifndef _NODE_H
 #define _NODE_H
 
-template <class T>   
-class TreeNode
-{ 
-	friend class Tree;
-public:
-	TreeNode(const T &);
-	T get_key(); 
-private:
-	TreeNode* left;           // указатель на левую ветку (ребёнка)
-	TreeNode* right;          // указатель на правую ветку
-	TreeNode* parent;         // указатель на родителя
-	T key;            /* ключ */ 
-};
+
 
 template <class T>
 class Tree
@@ -31,6 +19,19 @@ public:
 	TreeNode<T> *get_root();                            // Возвращает указатель на корень дерева  
 private:
 	TreeNode<T> *root;                                  // Корень  
+};
+template <class T>   
+class TreeNode
+{ 
+	friend class Tree;
+public:
+	TreeNode(const T &);
+	T get_key(); 
+private:
+	TreeNode* left;           // указатель на левую ветку (ребёнка)
+	TreeNode* right;          // указатель на правую ветку
+	TreeNode* parent;         // указатель на родителя
+	T key;            /* ключ */ 
 };
 
 #endif
