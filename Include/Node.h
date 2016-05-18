@@ -3,13 +3,14 @@
 #include <iostream>
 #include <fstream>
 template <class T>
-ostream & operator<<(ostream & out, Tree<T> &tree);
+ostream & operator<<(ostream & out, const Tree<T> &tree);
 
 template <class T>
-ifstream & operator >> (ifstream & fin, Tree<T> &tree);
+istream & operator >> (istream & fin, const Tree<T> &tree);
 
 template <class T>
-ofstream & operator<<(ofstream & fout, Tree<T> &tree);
+ofstream & operator << (ofstream & fout, const Tree<T> &tree);
+
 class Exceptions {
 	char* err;
 public:
@@ -50,7 +51,6 @@ public:
 	Tree(initializer_list<T> L); // Списковый конструктор  
 	~Tree();
 	int insert_node(const T &);                         // Вставляет узел  
-	void del(TreeNode<T>*)
 		void inorder_walk(TreeNode<T>*);       // Печатает все ключи в неубывающем порядке  
 	bool print_file(ofstream &fout);
 	bool print();
@@ -65,15 +65,15 @@ private:
 	TreeNode<T>* find_max(TreeNode<T>*);         // Находит узел с минимальным значением ключа и возвращает указатель на него  
 	TreeNode<T>* find_min(TreeNode<T>*);
 	friend ostream & operator<<(ostream & out, Tree<T> &tree);
-	friend ifstream & operator >> (ifstream & fin, Tree<T> &tree);
+	friend istream & operator >> (istream & fin, Tree<T> &tree);
 	friend ofstream & operator<<(ofstream & fout, Tree<T> &tree);
 	static void fillList(list<const TreeNode*> & list, const TreeNode *);
 	class TreeIt {
 	public:
 		TreeIt() = default;
-		TreeIt(const Node * node);
-		bool operator == (const TreeIt & _iterator) -> bool;
-		bool operator != (const TreeIt & _iterator) -> bool;
+		TreeIt(const Node * );
+		bool operator == (const TreeIt & _iterator) ;
+		bool operator != (const TreeIt & _iterator) ;
 		TreeIt operator ++();
 		const T & operator *();
 	private:
