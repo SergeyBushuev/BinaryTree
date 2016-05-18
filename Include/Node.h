@@ -35,7 +35,9 @@ public:
 	void del(TreeNode<T>*)
 	TreeNode<T>* delete_node(TreeNode<T> *);     // Удаляет узел  
 	void inorder_walk(TreeNode<T>*);                    // Печатает все ключи в неубывающем порядке  
-	frinend
+	frined ostream & operator<<(ostream & out, Tree<T> &tree);
+	frined ifstream & operator >> (ifstream & fin, Tree<T> &tree);
+	frined ofstream & operator<<(ofstream & fout, Tree<T> &tree);
 	TreeNode<T>* find_max(TreeNode<T>*);         // Находит узел с минимальным значением ключа и возвращает указатель на него  
 	TreeNode<T>* find_min(TreeNode<T>*);
 	TreeNode<T>* find_node(TreeNode<T>*, const T &);  // Находит элемент по ключу
