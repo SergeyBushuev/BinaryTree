@@ -1,6 +1,7 @@
 #ifndef _NODE_H
 #define _NODE_H
-
+#include <iostream>
+#include <fstream>
 template <class T>
 ostream & operator<<(ostream & out, Tree<T> &tree);
 
@@ -9,7 +10,12 @@ ifstream & operator >> (ifstream & fin, Tree<T> &tree);
 
 template <class T>
 ofstream & operator<<(ofstream & fout, Tree<T> &tree);
-
+class Exceptions {
+	char* err;
+public:
+	Exceptions(char* _err);
+	char* what();
+};
 class File_Not_Open : public Exceptions {
 public:
 	File_Not_Open();
@@ -20,23 +26,23 @@ public:
 	Empty_tree();
 };
 
-template <class T>   
+template <class T>
 class TreeNode
-{ 
+{
 	friend class Tree;
 public:
 	TreeNode(const T &);
-	T get_key(); 
+	T get_key();
 private:
 	TreeNode* left;           // указатель на левую ветку (ребёнка)
 	TreeNode* right;          // указатель на правую ветку
 	TreeNode* parent;         // указатель на родителя
-	T key;            /* ключ */ 
+	T key;            /* ключ */
 };
 
 template <class T>
 class Tree
-{ 
+{
 	class TreeIt;
 	using iterator = TreeIt;
 public:
@@ -45,8 +51,8 @@ public:
 	~Tree();
 	int insert_node(const T &);                         // Вставляет узел  
 	void del(TreeNode<T>*)
-	void inorder_walk(TreeNode<T>*);       // Печатает все ключи в неубывающем порядке  
-	bool print_file(ofstream &fout);             
+		void inorder_walk(TreeNode<T>*);       // Печатает все ключи в неубывающем порядке  
+	bool print_file(ofstream &fout);
 	bool print();
 	TreeNode<T>* delete_node(TreeNode<T> *);     // Удаляет узел  
 	TreeNode<T>* find_node(TreeNode<T>*, const T &);  // Находит элемент по ключу
@@ -61,8 +67,8 @@ private:
 	frined ostream & operator<<(ostream & out, Tree<T> &tree);
 	frined ifstream & operator >> (ifstream & fin, Tree<T> &tree);
 	frined ofstream & operator<<(ofstream & fout, Tree<T> &tree);
-	static void fillList(list<const TreeNode*> & list, const TreeNode * );
-class TreeIt {
+	static void fillList(list<const TreeNode*> & list, const TreeNode *);
+	class TreeIt {
 	public:
 		TreeIt() = default;
 		TreeIt(const Node * node);
