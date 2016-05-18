@@ -19,8 +19,8 @@ template <class T>
 class Tree
 { 
 public:
-	Tree();    
-	Tree(initializer_list<T> L);// Конструктор  
+	Tree();    // Конструктор 
+	Tree(initializer_list<T> L); // Списковый конструктор  
 	int insert_node(const T &);                         // Вставляет узел  
 	TreeNode<T>* delete_node(TreeNode<T> *);     // Удаляет узел  
 	void inorder_walk(TreeNode<T>*);                    // Печатает все ключи в неубывающем порядке  
