@@ -23,6 +23,7 @@ public:
 	Tree(initializer_list<T> L); // Списковый конструктор  
 	~Tree();
 	int insert_node(const T &);                         // Вставляет узел  
+	void del(TreeNode<T>*)
 	TreeNode<T>* delete_node(TreeNode<T> *);     // Удаляет узел  
 	void inorder_walk(TreeNode<T>*);                    // Печатает все ключи в неубывающем порядке  
 	TreeNode<T>* find_max(TreeNode<T>*);         // Находит узел с минимальным значением ключа и возвращает указатель на него  
