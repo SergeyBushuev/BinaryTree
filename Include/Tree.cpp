@@ -174,3 +174,24 @@ TreeNode<T>* Tree<T>::get_root()
 {
 	return root;
 }
+template <class T>
+ifstream & operator >>(ifstream & fin, Tree<T> & tree) {
+	if (!fin.is_open()) throw File_Not_Open();
+	T x;
+	while (!fin.eof()) {
+		fin >> x;
+		if (x != -1)tree.insert_node(x);
+		else break;
+	}
+	return fin;
+}
+template <class T>
+ostream & operator <<(ostream & out, Tree<T> & tree) {
+	if (tree.root->print()) return out;
+	else throw Empty_tree();
+}
+template <class T>
+ofstream & operator <<(ofstream & fout, Tree<T> & tree) {
+	if (tree.root->print_file(fout)) return fout;
+	else throw Empty_tree();
+}
