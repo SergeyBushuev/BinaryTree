@@ -7,26 +7,26 @@ Exceptions::Exceptions(char* _err) : err(_err) {}
 char* Exceptions::what() { return err; }
 File_Not_Open::File_Not_Open() : Exceptions("Error1: Файл не открыт") {}
 Empty_tree::Empty_tree() : Exceptions("Error#2: Пустое дерево") {}
-template <class T> class Tree;
-template<class T>
+template <typename T> class Tree;
+template<typename T>
 TreeNode <T>::TreeNode(const T &a)
 {
 	key = a;
 	left = 0;
 	right = 0;
 }
-template <class T>
+template <typename T>
 T TreeNode <T>::get_key()
 {
 	return key;
 }
 
-template<class T>
+template<typename T>
 Tree<T>::Tree()
 {
 	root = nullptr;                      // Пустое дерево
 }
-template <class T>
+template <typename T>
 Tree<T>::Tree(initializer_list<T> L) {
 	root = nullptr;
 	for (int i : L)
@@ -34,12 +34,14 @@ Tree<T>::Tree(initializer_list<T> L) {
 		insert_node(i);
 	}
 }
-template<class T>
+template<typename T>
 Tree<T>::~Tree()
 {
-	if (root) del(root);                      // Пустое дерево
+	if (root) {
+		del(root);
+	}
 }
-template<class T>
+template<typename T>
 int Tree<T>::del(TreeNode<T>* z)
 {
 	if (z->left) {
@@ -51,7 +53,7 @@ int Tree<T>::del(TreeNode<T>* z)
 
 	delete z;
 }
-template<class T>
+template<typename T>
 int Tree<T>::insert_node(const T &x)
 {
 	TreeNode<T>* n = new TreeNode<T>(x);
@@ -87,7 +89,7 @@ int Tree<T>::insert_node(const T &x)
 (в смысле порядка на ключах) за z элемент y; у него нет левого ребенка (всегда). Теперь можно
 скопировать ключ и дополнительные данные из вершины y в вершину z, а саму вершину y удалить
 описанным выше способом */
-template <class T>
+template <typename T>
 bool Tree<T>::print_file(ofstream &fout) {
 	if (root != nullptr) {
 		if (fout.is_open()) {
@@ -99,7 +101,7 @@ bool Tree<T>::print_file(ofstream &fout) {
 	}
 	return false;
 }
-template <class T>
+template <typename T>
 bool Tree<T>::print() {
 	if (root != nullptr) {
 		if (left != nullptr) left->print_console();
@@ -120,7 +122,7 @@ iterator Tree<T>::end()
 {
 	return iterator();
 }
-template<class T>
+template<typename T>
 TreeNode<T>* Tree<T>::delete_node(TreeNode<T> *z)
 {
 	TreeNode<T>* y;
@@ -149,7 +151,7 @@ TreeNode<T>* Tree<T>::delete_node(TreeNode<T> *z)
 	delete z;
 	return y;
 }
-template<class T>
+template<typename T>
 TreeNode<T>* Tree<T>::find_max(TreeNode<T>* x)
 {
 	while (x->right != 0)                              // здесь все очевидно - самое максимальное значение у самого правого  
@@ -172,14 +174,14 @@ void Tree<T>::fillList(list<const TreeNode *> & list, const TreeNode * node) -> 
 	}
 }
 
-template<class T>
+template<typename T>
 TreeNode<T>* Tree<T>::find_min(TreeNode<T>* x)
 {
 	while (x->left != 0)
 		x = x->left;
 	return x;
 }
-template<class T>
+template<typename T>
 TreeNode<T>* Tree<T>::find_succsessor(const T & val)
 {
 	TreeNode<T>* x = find_node(root, val);                     /* получим указатель на ноду с ключем val */
@@ -197,7 +199,7 @@ TreeNode<T>* Tree<T>::find_succsessor(const T & val)
 	}
 	return y;
 }
-template<class T>
+template<typename T>
 TreeNode<T>* Tree<T>::find_node(TreeNode<T>* n,
 	const T & val)
 {
@@ -208,7 +210,7 @@ TreeNode<T>* Tree<T>::find_node(TreeNode<T>* n,
 	else
 		return find_node(n->left, val);
 }
-template<class T>
+template<typename T>
 void Tree<T>::inorder_walk(TreeNode<T>* n)
 {
 	if (n != 0)
@@ -219,13 +221,13 @@ void Tree<T>::inorder_walk(TreeNode<T>* n)
 	}
 }
 
-template<class T>
+template<typename T>
 TreeNode<T>* Tree<T>::get_root()
 {
 	return root;
 }
-template <class T>
-ifstream & operator >>(ifstream & fin, Tree<T> & tree) {
+template <typename T>
+istream & operator >>(istream & fin, Tree<T> & tree) {
 	if (!fin.is_open()) throw File_Not_Open();
 	T x;
 	while (!fin.eof()) {
@@ -235,12 +237,12 @@ ifstream & operator >>(ifstream & fin, Tree<T> & tree) {
 	}
 	return fin;
 }
-template <class T>
+template <typename T>
 ostream & operator <<(ostream & out, Tree<T> & tree) {
 	if (tree.root->print()) return out;
 	else throw Empty_tree();
 }
-template <class T>
+template <typename T>
 ofstream & operator <<(ofstream & fout, Tree<T> & tree) {
 	if (tree.root->print_file(fout)) return fout;
 	else throw Empty_tree();
@@ -273,5 +275,5 @@ TreeIt Tree<T>::TreeIt::operator ++()
 template <typename T>
 const T & Tree<T>::TreeIt::operator *()
 {
-	return history_.front()->value_;
+	return history_.front()->key;
 }
