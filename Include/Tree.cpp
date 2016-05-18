@@ -32,6 +32,11 @@ Tree<T>::Tree(initializer_list<T> L){
 	}
 }
 template<class T>
+Tree<T>::~Tree()
+{
+	if(root) del(root);                      // Пустое дерево
+}
+template<class T>
 int Tree<T>::del(TreeNode<T>* z)
 {
 	if (z->left) {
