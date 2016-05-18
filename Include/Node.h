@@ -1,6 +1,15 @@
 #ifndef _NODE_H
 #define _NODE_H
 
+template <class T>
+ostream & operator<<(ostream & out, Tree<T> &tree);
+
+template <class T>
+ifstream & operator >> (ifstream & fin, Tree<T> &tree);
+
+template <class T>
+ofstream & operator<<(ofstream & fout, Tree<T> &tree);
+
 template <class T>   
 class TreeNode
 { 
