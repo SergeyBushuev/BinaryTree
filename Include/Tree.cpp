@@ -144,6 +144,21 @@ TreeNode<T>* Tree<T>::find_max(TreeNode<T>* x)
 		x = x->right;
 	return x;
 }
+template <typename T>
+void Tree<T>::fillList(list<const TreeNode *> & list, const TreeNode * node) -> void
+{
+	if (node) {
+		if (node->left != nullptr) {
+			fillList(list, node->left);
+		}
+
+		listOfNodes.push_back(node);
+
+		if (node->right != nullptr) {
+			fillList(list, node->right);
+		}
+	}
+}
 
 template<class T>
 TreeNode<T>* Tree<T>::find_min(TreeNode<T>* x)
