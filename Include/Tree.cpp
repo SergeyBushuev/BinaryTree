@@ -108,6 +108,17 @@ bool Tree<T>::print() {
 	}
 	else return false;
 }
+template <typename T>
+iterator Tree<T>::begin() 
+{
+	return iterator(root);
+}
+
+template <typename T>
+iterator Tree<T>::end() 
+{
+	return iterator();
+}
 template<class T>
 TreeNode<T>* Tree<T>::delete_node(TreeNode<T> *z)
 {
