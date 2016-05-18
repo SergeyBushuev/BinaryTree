@@ -30,7 +30,7 @@ Tree<T>::Tree(initializer_list<T> L){
 	root = nullptr;
 	for (int i : L)
 	{
-		add(i);
+		insert_node(i);
 	}
 }
 template<class T>
