@@ -14,7 +14,7 @@ set(SOURCES ${PROJECT_SOURCE_DIR}/include/tree.cpp)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
-include_directories(${PROJECT_SOURCE_DIR}/Include)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_library (${PROJECT} STATIC ${HEADERS} ${SOURCES})
 
