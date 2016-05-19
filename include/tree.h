@@ -44,13 +44,7 @@ public:
 	Error_stream();
 };
 
-Exceptions::Exceptions(char* _err) : err(_err) {}
-char* Exceptions::what() { return err; }
-Exist::Exist() : Exceptions("ERROR: It's already exist!") {}
-File_Not_Open::File_Not_Open() : Exceptions("ERROR: file is not open!") {}
-Empty::Empty() : Exceptions("ERROR: The Binary Tree is empty!") {}
-Deleted::Deleted() : Exceptions("ERROR: It was deleted before") {}
-Error_stream::Error_stream() : Exceptions("ERROR: Stream error") {}
+
 template <class T>
 class Tree {
 public:
