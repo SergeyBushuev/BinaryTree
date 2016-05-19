@@ -15,7 +15,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
-
+link_directories(${PROJECT_SOURCE_DIR}/include )
 add_library (${PROJECT} STATIC ${HEADERS} ${SOURCES})
 
 if (TESTS_FOR_${PROJECT})
