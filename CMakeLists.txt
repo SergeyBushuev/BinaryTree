@@ -6,7 +6,7 @@ project (${PROJECT})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
   
-option(TESTS_FOR_${PROJECT} "Include tests for project" ON)
+option(TESTS_FOR_${PROJECT} "Include tests for project" ON) 
 
 set(HEADERS ${PROJECT_SOURCE_DIR}/include/tree.h)
 set(SOURCES ${PROJECT_SOURCE_DIR}/include/tree.cpp)
