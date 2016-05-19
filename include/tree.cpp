@@ -25,7 +25,7 @@ Tree<T>::Tree(const std::initializer_list<T> & ilist) {
 
 template <class T>
 Tree<T>::~Tree() {
-	if (root!=nullptr) {
+	if (root) {
 		root->destroy(root);
 	}
 }
