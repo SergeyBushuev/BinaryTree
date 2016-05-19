@@ -1,4 +1,4 @@
-#include "Tree.h" 
+#include "tree.h" 
 
 template <class T>
 size_t Tree<T>::size() {
